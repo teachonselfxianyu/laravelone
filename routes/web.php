@@ -30,12 +30,12 @@ Route::prefix('admin')->group(function(){
             //列表
             Route::get('/','Admin\AdminUserController@index')->name('admin.adminuser');
             //添加编辑
-            Route::get('add','Admin\AdminUserController@add')->name('admin.adminuser.add');
-            Route::post('add','Admin\AdminUserController@save')->name('admin.adminuser.add');
+            Route::get('add{adminuser?}','Admin\AdminUserController@add')->name('admin.adminuser.add');
+            Route::post('add{adminuser?}','Admin\AdminUserController@save')->name('admin.adminuser.add');
             //软删除
-            Route::get('remove/(adminuser)','Admin\AdminUserController@remove')->name('admin.adminuser.remove');
+            Route::get('remove/{adminuser}','Admin\AdminUserController@remove')->name('admin.adminuser.remove');
             //切换状态
-            Route::get('state/(adminuser)','Admin\AdminUserController@state')->name('admin.adminuser.state');
+            Route::get('state/{adminuser}','Admin\AdminUserController@state')->name('admin.adminuser.state');
             
        
 

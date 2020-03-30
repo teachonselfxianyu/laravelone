@@ -17,12 +17,12 @@
 @endcomponent
 <div class='row'>
     <div class='col-12'>
-    <form method="POST" action='{{route("admin.adminuser.add")}}'>
+    <form method="POST" action='{{route("admin.adminuser.add",$adminusers->id)}}'>
     @csrf
         <div class="form-group row">
             <label  class="col-sm-2 col-form-label">用户名</label>
             <div class="col-sm-10">
-                <input type='text' class="form-control" name="username" value='{{old("username")}}'>
+                <input type='text' class="form-control" name="username" value='{{old("username",$adminusers->username)}}'>
                 @error('username')
                 <small class='from-text text-danger'>{{$message}}</small>
                 @enderror

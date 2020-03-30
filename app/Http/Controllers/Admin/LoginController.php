@@ -33,8 +33,8 @@ class LoginController extends Controller
     public function logout(){
         
        $is = Auth::guard('admin')->logout();
-       dump($is);
-        //return redirect()->route('admin.index');
+       
+        return redirect()->route('admin.index');
     }
 
 
