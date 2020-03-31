@@ -40,6 +40,12 @@ Route::prefix('admin')->group(function(){
        
 
         });
+        Route::prefix('setting')->group(function(){
+            Route::get('/','admin\SettingController@index')->name('admin.setting');
+            Route::post('/','admin\SettingController@save')->name('admin.setting');
+
+
+        });
         
 
     });
