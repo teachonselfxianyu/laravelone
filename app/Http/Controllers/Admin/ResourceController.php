@@ -9,13 +9,23 @@ use Illuminate\Http\Request;
 class ResourceController extends Controller
 {
     //资源列表
-    public function index(){
-        $data = [];
+    public function index(Resource $resource){
+        $resources = $resource->orderBy('id','asc')->get();
+        $data = [
+            'resources' => $resources
+        ];
         return view('admin.resource.index',$data);
     }
     //添加资源
     public function add(Request $request , Resource $resource){
-        $data = [];
+        
+        $type = $request->input('type',null);
+        if(!$type){
+            return redirect()->route('admin.resource');
+        }
+        $data = [
+            'type' => $type
+        ];
         return view('admin.resource.add',$data);
 
     }

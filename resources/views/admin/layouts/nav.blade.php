@@ -13,7 +13,7 @@
         <a class="nav-link" href="{{route('admin.adminuser')}}"><i class="fas fa-user-circle"></i>管理员</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.resource)}}"><i class="fas fa-folder-open"></i>课程资源</a>
+        <a class="nav-link" href="{{route('admin.resource')}}"><i class="fas fa-folder-open"></i>课程资源</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#"><i class="fas fa-cog"></i>课程管理</a>
@@ -29,7 +29,7 @@
                 <a class="nav-link" href="" tabindex="-1"><i class="fas fa-user-circle"></i>管理员</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href='{{route("admin.logout")}} tabindex="-1">退出</a>
+                <a class="nav-link" href="{{route('admin.logout')}}" tabindex="-1">退出</a>
             </li>
         </ul>
   </div>
