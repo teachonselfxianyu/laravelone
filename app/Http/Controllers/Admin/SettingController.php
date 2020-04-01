@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 class SettingController extends Controller
 {
     //配置首页
+   
     public function index(Setting $setting){
+        
+       
         $settings = $setting->orderBy('sort','asc')->get();
         $data = [
             'settings'=> $settings

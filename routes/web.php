@@ -40,12 +40,29 @@ Route::prefix('admin')->group(function(){
        
 
         });
+        //系统设置
         Route::prefix('setting')->group(function(){
-            Route::get('/','admin\SettingController@index')->name('admin.setting');
-            Route::post('/','admin\SettingController@save')->name('admin.setting');
+            Route::get('/','Admin\SettingController@index')->name('admin.setting');
+            Route::post('/','Admin\SettingController@save')->name('admin.setting');
 
 
         });
+        //资源管理模块
+        Route::prefix('resource')->group(function(){
+            //资源列表页
+            Route::get('/','Admin\ResourceController@index')->name('admin.resource');
+            //资源添加页
+            Route::get('/add/{resource?}','Admin\ResourceController@add')->name('admin.resource.add');
+            Route::post('/add/{resource?}','Admin\ResourceController@save')->name('admin.resource.add');
+
+            //资源移除页（资源一旦使用，不能随意删除）
+            Route::get('/remove/{resource}','Admin\ResourceController@remove')->name('admin.resource.remove');
+
+            //编辑器上传图片
+            Route::post('/up','Admin\ResourceController@up')->name('admin.resource.up');
+
+        });
+
         
 
     });

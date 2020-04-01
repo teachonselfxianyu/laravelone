@@ -19,3 +19,9 @@ function alert($msg,$type='success'){
     session()->flash($type,$msg);
     
 }
+//获取指定KEY的配置信息
+function setting($key){
+    $data = app('App\Setting')->kv();
+    return $data[$key];
+
+}
