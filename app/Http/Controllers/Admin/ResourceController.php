@@ -5,15 +5,32 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Resource;
 use Illuminate\Http\Request;
+use stdClass;
 
 class ResourceController extends Controller
 {
     //资源列表
-    public function index(Resource $resource){
-        $resources = $resource->orderBy('id','asc')->get();
+    public function index(Resource $resource ,Request $request){
+        $search = new stdClass;
+        $search->keyword = $request->input('keyword','');
+        $search->adminuser_id =$request->input('adminuser_id','');
+        $search->type = $request->input('type',null);
+        
+        if($search->keyword){
+            $resource = $resource->where('title','like','%{$search->keyword}%');
+        }
+        if($search->adminuser_id){
+            $resource = $resource->where('adminuser_id',$search->adminuser_id);
+        }
+        if($search->type){
+            $resource = $resource->whereIn('type',$search->type);
+        }
+        $resources = $resource->orderBy('id','asc')->paginate(setting("page_resource"));
         $data = [
-            'resources' => $resources
+            'resources' => $resources,
+            'search' => $search
         ];
+       
         return view('admin.resource.index',$data);
     }
     //添加资源
