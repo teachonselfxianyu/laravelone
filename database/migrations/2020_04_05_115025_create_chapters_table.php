@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResourceVideosTable extends Migration
+class CreateChaptersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateResourceVideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('resource_videos', function (Blueprint $table) {
+        Schema::create('chapters', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('resource_id')->default(0);
-            $table->string('ali_id',255)->comment('针对阿里云的视频id');
+            $table->integer('course_id')->default(0);
+            $table->string('title',255);
+            $table->string('desc',255);
+            $table->integer('sort')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });
-        
     }
 
     /**
@@ -30,6 +31,6 @@ class CreateResourceVideosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resourcs_videos');
+        Schema::dropIfExists('chapters');
     }
 }

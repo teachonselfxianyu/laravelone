@@ -30,11 +30,14 @@
                     <div class="form-check form-check-inline align-middle">
                     <label class="form-check-label">
                         @if(!$search->type)
-                        
+                        <input name="type[{{$key}}]" class="form-check-input" type="checkbox" value="{{$key}}" checked}>
+                        {!! 
+                            $value !!}
                         @else
                         <input name="type[{{$key}}]" class="form-check-input" type="checkbox" value="{{$key}}" {{isset($search->type[$key]) ? "checked" : ''}}>
                         {!!$value!!}
                     </label>
+                    @endif
                     </div>
                     @endforeach
                 </div>
@@ -69,8 +72,8 @@
                         <td>{{$resource->title}}</td>
                         <td>{{$resource->created_at}}</td>
                         <td>
-                        <a class="btn btn-sm btn-secondary" href=''>修改</a>
-                        <a class="btn btn-sm btn-danger" onclick='return confirm("确认删除吗")' href=''>删除</a>
+                        <a class="btn btn-sm btn-secondary" href='{{route("admin.resource.add",[$resource->id])}}'>修改</a>
+                        <a class="btn btn-sm btn-danger" onclick='return confirm("确认删除吗")' href='{{route("admin.resource.remove",[$resource->id])}}'>删除</a>
 
                         </td>
                     </tr>

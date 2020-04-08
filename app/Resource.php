@@ -23,7 +23,14 @@ class Resource extends Model
     public function adminUser(){
         return $this->BelongsTo('App\AdminUser','adminuser_id');
     }
-    
+    //一对一关联到视频子表
+    public function video(){
+        return $this->hasOne('App\ResourceVideo');
+    }
+    //一对一关联到文档子表
+    public function doc(){
+        return $this->hasOne('App\ResourceDoc');
+    }
         
     
 

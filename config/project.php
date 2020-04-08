@@ -14,5 +14,17 @@ return[
             Resource::DOC => '<span class="text-primary">文档</span>'
 
         ]
+        ],
+    'upload' => [
+        'type' => [
+            'doc_editor'=>'资源编辑器',
+            'course_image'=> '课程头图',
+            'other_upload'=> '独立上传',
+
+        ],
+        'image' => [
+            'jpg','jpeg','gif','png','raf'
+        ],
+        'files' =>['jpg','jpeg','gif','zip','rar','png']
     ]
  ];
