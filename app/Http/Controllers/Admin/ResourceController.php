@@ -94,6 +94,10 @@ class ResourceController extends Controller
     }
     //移除资源 
     public function remove(Request $request , Resource $resource){
+        if($resource->chapter()->count() > 0){
+            alert('操作失败，有课程在使用该资源','danger');
+            return back();
+        }
         $resource->delete();
         alert('操作成功');
         return back();

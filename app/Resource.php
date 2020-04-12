@@ -31,6 +31,10 @@ class Resource extends Model
     public function doc(){
         return $this->hasOne('App\ResourceDoc');
     }
+    public function chapter(){
+        return $this->belongsToMany('App\Chapter')
+        ->orderBy('sort','asc')->withPivot('sort')->withTimestamps();
+    }
         
     
 

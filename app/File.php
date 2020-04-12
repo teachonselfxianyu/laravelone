@@ -33,4 +33,7 @@ class File extends Model
         ];
         $this->create($data);
     }
+    public function adminUser(){
+        return $this->belongsToMany('App\AdminUser','adminuser_id');
+    }
 }

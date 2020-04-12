@@ -19,7 +19,7 @@
         <a class="nav-link" href="{{route('admin.course')}}"><i class="fas fa-cog"></i>课程管理</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fas fa-clone"></i>文件管理</a>
+        <a class="nav-link" href="{{route('admin.file')}}"><i class="fas fa-clone"></i>文件管理</a>
       </li>
     </ul>
   </div>

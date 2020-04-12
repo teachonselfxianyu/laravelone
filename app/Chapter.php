@@ -9,5 +9,9 @@ class Chapter extends Model
 {
     //
     use SoftDeletes;
-    protected $fillabe = ['course_id','title','desc','sort'];
+    protected $fillable = ['course_id','title','desc','sort'];
+    public function resource(){
+        return $this->belongsToMany('App\Resource')
+        ->orderBy('sort','asc')->withPivot('sort')->withTimestamps();
+    }
 }

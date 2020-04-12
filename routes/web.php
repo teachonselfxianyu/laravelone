@@ -84,15 +84,21 @@ Route::prefix('admin')->group(function(){
                  Route::get('/add/{chapter?}','Admin\CourseController@chapterAdd')->name('admin.course.chapter.add');
                  Route::post('/add/{chapter?}','Admin\CourseController@chapterSave')->name('admin.course.chapter.add');
 
-                 Route::get('/remove/{chapter?}','Admin\CourseController@Remove')->name('admin.course.chapter.remove');
+                 Route::get('/remove/{chapter?}','Admin\CourseController@ChapterRemove')->name('admin.course.chapter.remove');
 
              });
             //资源管理
              Route::prefix('{course}/{chapter}/resource')->group(function(){
-                 Route::get('/add','Admin\CourseController@resourceAdd)')->name('admin.resource.add');
-                 Route::post('/add','Admin\CourseController@resourceSave)')->name('admin.resource.add');
+                 Route::get('/add/{resource?}','Admin\CourseController@resourceAdd')->name('admin.course.resource.add');
+                 Route::post('/add/{resource?}','Admin\CourseController@resourceSave')->name('admin.course.resource.add');
 
              });
+        });
+        //文件管理
+        Route::prefix('file')->group(function(){
+            Route::get('/','Admin\FileController@index')->name('admin.file');
+            Route::get('/up','Admin\FileController@up')->name('admin.file.up');
+            Route::get('/up','Admin\FileController@save')->name('admin.file.up');
         });
 
         
